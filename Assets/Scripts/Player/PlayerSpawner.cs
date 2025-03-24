@@ -1,22 +1,30 @@
-using System;
 using Photon.Pun;
 using UnityEngine;
 
-public class PlayerSpawner : MonoBehaviour
+
+
+namespace Player
 {
-   [SerializeField] private Plane floor;
+    public class PlayerSpawner : MonoBehaviour
+    {
+        [SerializeField] private Transform spawnPointA;
+        [SerializeField] private Transform spawnPointB;
+        [SerializeField] private GameObject playerPrefab;
+
+        private void Start()
+        {
+            SpawnPlayer();
+        }
+
+        private void SpawnPlayer()
+        {
+            Vector3 spawnPosition = PhotonNetwork.IsMasterClient ? spawnPointA.position : spawnPointB.position;
+            GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition, Quaternion.identity);
 
 
-   private void Start()
-   {
+            PlayerHealth playerHealth = player.GetComponentInChildren<PlayerHealth>();
+            playerHealth.SetSpawnPoints(spawnPointA.position,spawnPointB.position);
+        }
 
-   }
-
-   private void SpawnPlayer()
-   {
-      PhotonNetwork.Instantiate("Player", Vector3.zero, Quaternion.identity, 0);
-   }
-
-   
-
+    }
 }

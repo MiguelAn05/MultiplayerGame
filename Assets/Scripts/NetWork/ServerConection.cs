@@ -1,35 +1,31 @@
-using System;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
+
 namespace NetWork
 {
-    public class ServerConection : MonoBehaviourPunCallbacks
+    public class ServerConnection : MonoBehaviourPunCallbacks
     {
         private void Start()
         {
+            Debug.Log(" Intentando conectar a Photon...");
             PhotonNetwork.ConnectUsingSettings();
         }
 
-        public override void OnConnected()
-        {
-            base.OnConnected();
-            print("is conected");
-        }
         public override void OnConnectedToMaster()
         {
-            base.OnConnectedToMaster();
-            Debug.Log("Conectado master ");
-            PhotonNetwork.JoinLobby();
+            Debug.Log("Conectado al Master Server. Entrando al Lobby...");
+            PhotonNetwork.JoinLobby(); 
         }
 
-       
-        
         public override void OnJoinedLobby()
         {
-            base.OnJoinedLobby();
-            print("is joined");
+            Debug.Log(" Entraste al Lobby de Photon.");
         }
-        
-        
+
+        public override void OnDisconnected(DisconnectCause cause)
+        {
+            Debug.LogError($" Desconectado de Photon. Causa: {cause}");
+        }
     }
 }
