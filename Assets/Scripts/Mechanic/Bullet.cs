@@ -11,7 +11,6 @@ namespace Mechanic
     {
         public float speed = 10f;
         private Vector3 _direction;
-
         private Rigidbody2D _rb;
 
         private void Awake()
@@ -29,31 +28,27 @@ namespace Mechanic
             _rb.linearVelocity = _direction * speed;
         }
 
-
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Physics2D.SyncTransforms(); // 🔹 Forzar la actualización de colisiones
-    
-            Debug.Log($"🔥 La bala tocó: {other.gameObject.name} (Tag: {other.tag})");
+            Debug.Log($"🔥 La bala tocó: {other.name} (Tag: {other.tag})");
 
             if (other.CompareTag("Player"))
             {
-                Debug.Log("🔫 Bala impactó a un jugador!");
+                PlayerHealth playerHealth = other.GetComponentInChildren<PlayerHealth>();
 
-                PhotonNetwork.Destroy(gameObject); // 🔹 Destruir la bala
-
-                PlayerHealth playerHealth = other.gameObject.GetComponentInChildren<PlayerHealth>();
-        
                 if (playerHealth != null)
                 {
-                    Debug.Log("💀 PlayerHealth encontrado, aplicando daño.");
+                    Debug.Log("⚡ Ejecutando TakeDamage en el jugador golpeado...");
                     playerHealth.TakeDamage();
                 }
                 else
                 {
-                    Debug.LogError("❌ No se encontró PlayerHealth en el jugador.");
+                    Debug.LogError("❌ No se encontró el componente PlayerHealth en el jugador.");
                 }
+
+                PhotonNetwork.Destroy(gameObject);
             }
         }
+
     }
 }

@@ -21,10 +21,8 @@ namespace Player
             Vector3 spawnPosition = PhotonNetwork.IsMasterClient ? spawnPointA.position : spawnPointB.position;
             GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition, Quaternion.identity);
 
-
-            PlayerHealth playerHealth = player.GetComponentInChildren<PlayerHealth>();
-            playerHealth.SetSpawnPoints(spawnPointA.position,spawnPointB.position);
+            PlayerHealth playerHealth = player.GetComponentInChildren<PlayerHealth>(); 
+            playerHealth.SetSpawnPoints(spawnPointA.position, spawnPointB.position);
         }
-
     }
 }

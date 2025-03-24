@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4599209559120889677}
   - component: {fileID: 8069038614096838851}
   - component: {fileID: -3418042782734722277}
+  - component: {fileID: 8255872806758242989}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -241,6 +242,18 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &8255872806758242989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733564826993550732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13f10c67e0df416dbc01e97d6d5b1e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6659247227928542034
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +280,7 @@ Transform:
   m_GameObject: {fileID: 6659247227928542034}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.777, y: 0.018, z: 0}
+  m_LocalPosition: {x: 1.068, y: 0.018, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

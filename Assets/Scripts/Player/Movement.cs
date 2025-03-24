@@ -64,6 +64,8 @@ namespace Player
             Vector2 rayOrigin = new Vector2(transform.position.x, transform.position.y - 0.5f);
             _isGrounded = Physics2D.Raycast(rayOrigin, Vector2.down, rayLength, groundLayer);
         }
+        
+       
     }
 
 }
